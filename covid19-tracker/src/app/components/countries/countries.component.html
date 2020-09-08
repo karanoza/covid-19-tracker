@@ -1,21 +1,16 @@
 <div class="jumbotron bg-white text-center">
   <h1 class="display-4">Corona Covid-19 Tracker Country Wise</h1>
-  <p class="lead">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt porro
-    facere unde illo voluptatum quia doloribus eveniet nihil, facilis officiis,
-    laudantium dolor nesciunt exercitationem quam quisquam commodi inventore
-    suscipit impedit placeat! Laboriosam perspiciatis eaque possimus itaque
-    repellat recusandae placeat, mollitia odio fugit quae voluptatum provident
-    tempora, deleniti vero culpa! Dolorum.
-  </p>
-  <hr class="my-4" />
-  <p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium et
-    placeat eum incidunt consequuntur cum error reiciendis! Aliquid minus non,
-    quo doloremque, molestiae magnam fuga consequatur pariatur dolorum, eveniet
-    praesentium eius maiores odio eos facere quasi repudiandae unde rerum. At
-    id, voluptatum saepe nulla sapiente cumque accusantium! Aliquid quia et
-    quaerat, minus dolorem dicta eligendi quis quibusdam delectus magni fuga ad
-    distinctio ipsa illo eveniet atque reiciendis nesciunt laborum quam!
-  </p>
+  <hr />
+
+  <!-- Country Dropdown  -->
+  <div class="mx-auto">
+    <div class="form-group col-lg-5 mx-auto">
+      <label for="c">Select Country</label>
+      <select name="" id="c" class="form-control">
+        <option value="country" *ngFor="let country of countries">
+          {{ country }}
+        </option>
+      </select>
+    </div>
+  </div>
 </div>

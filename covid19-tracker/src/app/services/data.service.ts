@@ -1,3 +1,4 @@
+import { GlobalDataSummary } from "./../models/global-Data";
 import { logging } from "protractor";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -13,15 +14,38 @@ export class DataService {
   getGlobalData() {
     return this.http.get(this.globalDataUrl, { responseType: "text" }).pipe(
       map((result) => {
+        let data: GlobalDataSummary[] = [];
+
+        let raw = {};
         let rows = result.split("\n");
-        //console.log(rows);
+        rows.splice(0, 1); // ignore 0th index value header
 
         rows.forEach((row) => {
-          let cols = row.split(",");
-          console.log(cols);
-        });
+          let cols = row.split(/,(?=\S)/); //Regex for every value that has comma but no whitespace
 
-        return [];
+          let countrySummary = {
+            country: cols[3],
+            confirmed: +cols[7], //+ converts string value to integer or number
+            deaths: +cols[8],
+            recovered: +cols[9],
+            active: +cols[10],
+          };
+
+          //merge countrywise data
+          let temp: GlobalDataSummary = raw[countrySummary.country];
+          if (temp) {
+            temp.active = countrySummary.active + temp.active;
+            temp.confirmed = countrySummary.confirmed + temp.confirmed;
+            temp.deaths = countrySummary.deaths + temp.deaths;
+            temp.recovered = countrySummary.recovered + temp.recovered;
+
+            raw[countrySummary.country] = temp;
+          } else {
+            raw[countrySummary.country] = countrySummary;
+          }
+        });
+        console.log(raw);
+        return <GlobalDataSummary[]>Object.values(raw);
       })
     );
   }

@@ -1,21 +1,35 @@
 <div class="jumbotron bg-white text-center">
   <h1 class="display-4">Corona Covid-19 Tracker</h1>
-  <p class="lead">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt porro
-    facere unde illo voluptatum quia doloribus eveniet nihil, facilis officiis,
-    laudantium dolor nesciunt exercitationem quam quisquam commodi inventore
-    suscipit impedit placeat! Laboriosam perspiciatis eaque possimus itaque
-    repellat recusandae placeat, mollitia odio fugit quae voluptatum provident
-    tempora, deleniti vero culpa! Dolorum.
-  </p>
-  <hr class="my-4" />
-  <p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium et
-    placeat eum incidunt consequuntur cum error reiciendis! Aliquid minus non,
-    quo doloremque, molestiae magnam fuga consequatur pariatur dolorum, eveniet
-    praesentium eius maiores odio eos facere quasi repudiandae unde rerum. At
-    id, voluptatum saepe nulla sapiente cumque accusantium! Aliquid quia et
-    quaerat, minus dolorem dicta eligendi quis quibusdam delectus magni fuga ad
-    distinctio ipsa illo eveniet atque reiciendis nesciunt laborum quam!
-  </p>
+  <hr />
+
+  <!-- Cards dashboard -->
+  <div class="row">
+    <div class="card col p-3 m-3">
+      <div class="ui statistic">
+        <div class="label"><h3>Confirmed</h3></div>
+        <div class="value">{{ totalConfirmed }}</div>
+      </div>
+    </div>
+
+    <div class="card col p-3 m-3">
+      <div class="ui statistic">
+        <div class="label"><h3 style="color: green">Recovered</h3></div>
+        <div class="value">{{ totalRecovered }}</div>
+      </div>
+    </div>
+
+    <div class="card col p-3 m-3">
+      <div class="ui statistic">
+        <div class="label"><h3 style="color: blue">Active</h3></div>
+        <div class="value">{{ totalActive }}</div>
+      </div>
+    </div>
+
+    <div class="card col p-3 m-3">
+      <div class="ui statistic">
+        <div class="label"><h3 style="color: red">Deaths</h3></div>
+        <div class="value">{{ totalDeaths }}</div>
+      </div>
+    </div>
+  </div>
 </div>
