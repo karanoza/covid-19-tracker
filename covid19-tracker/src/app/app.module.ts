@@ -8,6 +8,8 @@ import { HomeComponent } from "./components/home/home.component";
 import { CountriesComponent } from "./components/countries/countries.component";
 import { HttpClientModule } from "@angular/common/http";
 import { DataService } from "./services/data.service";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { Ng2GoogleChartsModule } from "ng2-google-charts";
 
 @NgModule({
   declarations: [
@@ -15,8 +17,14 @@ import { DataService } from "./services/data.service";
     NavbarComponent,
     HomeComponent,
     CountriesComponent,
+    DashboardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    Ng2GoogleChartsModule,
+  ],
 
   providers: [DataService],
   bootstrap: [AppComponent],

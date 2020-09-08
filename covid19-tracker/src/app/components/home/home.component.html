@@ -1,35 +1,96 @@
+<div class="ui inverted dimmer" [class.active]="loading">
+  <div class="ui text loader">Loading</div>
+</div>
+
 <div class="jumbotron bg-white text-center">
   <h1 class="display-4">Corona Covid-19 Tracker</h1>
   <hr />
 
-  <!-- Cards dashboard -->
-  <div class="row">
-    <div class="card col p-3 m-3">
-      <div class="ui statistic">
-        <div class="label"><h3>Confirmed</h3></div>
-        <div class="value">{{ totalConfirmed }}</div>
+  <app-dashboard
+    [totalConfirmed]="totalConfirmed"
+    [totalActive]="totalActive"
+    [totalRecovered]="totalRecovered"
+    [totalDeaths]="totalDeaths"
+  ></app-dashboard>
+</div>
+<hr />
+
+<div class="ui form">
+  <div class="inline fields">
+    <label for="Cases">Select Case Type:</label>
+
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          name="casetype"
+          checked=""
+          tabindex="0"
+          class="hidden"
+          value="c"
+          id="c"
+          #c
+          (click)="updateChart(c)"
+        />
+        <label for="c">Confirmed</label>
       </div>
     </div>
 
-    <div class="card col p-3 m-3">
-      <div class="ui statistic">
-        <div class="label"><h3 style="color: green">Recovered</h3></div>
-        <div class="value">{{ totalRecovered }}</div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          value="r"
+          name="casetype"
+          tabindex="0"
+          class="hidden"
+          id="r"
+          #r
+          (click)="updateChart(r)"
+        />
+        <label for="r">Recovered</label>
       </div>
     </div>
 
-    <div class="card col p-3 m-3">
-      <div class="ui statistic">
-        <div class="label"><h3 style="color: blue">Active</h3></div>
-        <div class="value">{{ totalActive }}</div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          value="a"
+          name="casetype"
+          tabindex="0"
+          class="hidden"
+          id="a"
+          #a
+          (click)="updateChart(a)"
+        />
+        <label for="a">Active</label>
       </div>
     </div>
 
-    <div class="card col p-3 m-3">
-      <div class="ui statistic">
-        <div class="label"><h3 style="color: red">Deaths</h3></div>
-        <div class="value">{{ totalDeaths }}</div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          value="d"
+          name="casetype"
+          tabindex="0"
+          class="hidden"
+          id="d"
+          #d
+          (click)="updateChart(d)"
+        />
+        <label for="d">Deaths</label>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <google-chart [data]="ColumnChart"></google-chart>
+  </div>
+  <div class="col">
+    <google-chart [data]="PieChart"></google-chart>
   </div>
 </div>
