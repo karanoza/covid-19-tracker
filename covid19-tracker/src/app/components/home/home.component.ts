@@ -14,15 +14,17 @@ export class HomeComponent implements OnInit {
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
+
   loading = true;
+
   globalData: GlobalDataSummary[];
   dataTable = [];
 
-  PieChart: GoogleChartInterface = {
+  pieChart: GoogleChartInterface = {
     chartType: "PieChart",
   };
 
-  ColumnChart: GoogleChartInterface = {
+  columnChart: GoogleChartInterface = {
     chartType: "ColumnChart",
   };
 
@@ -40,12 +42,12 @@ export class HomeComponent implements OnInit {
 
     this.globalData.forEach((cs) => {
       let value: number;
-      if (caseType == "c") if (cs.confirmed > 2000) value = cs.confirmed;
+      if (caseType == "c") if (cs.confirmed > 200000) value = cs.confirmed;
 
-      if (caseType == "a") if (cs.active > 2000) value = cs.active;
-      if (caseType == "d") if (cs.deaths > 1000) value = cs.deaths;
+      if (caseType == "a") if (cs.active > 20000) value = cs.active;
+      if (caseType == "d") if (cs.deaths > 10000) value = cs.deaths;
 
-      if (caseType == "r") if (cs.recovered > 2000) value = cs.recovered;
+      if (caseType == "r") if (cs.recovered > 30000) value = cs.recovered;
 
       this.dataTable.push([cs.country, value]);
     });
@@ -53,15 +55,22 @@ export class HomeComponent implements OnInit {
     console.log(this.dataTable);
 
     // Piechart
-    this.PieChart = {
+    this.pieChart = {
       chartType: "PieChart",
       dataTable: this.dataTable,
       //firstRowIsData: true,
-      options: { height: 500 },
+      options: {
+        height: 500,
+        animation: {
+          duration: 100,
+          easing: "out",
+        },
+        is3D: true,
+      },
     };
 
     // ColumnChart
-    this.ColumnChart = {
+    this.columnChart = {
       chartType: "ColumnChart",
       dataTable: this.dataTable,
       //firstRowIsData: true,
